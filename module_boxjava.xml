@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_boxjava" default="compile.module.boxjava">
+  <dirname property="module.boxjava.basedir" file="${ant.file.module_boxjava}"/>
+  
+  <property name="module.jdk.home.boxjava" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.boxjava" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.boxjava" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.boxjava" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="boxjava.output.dir" value="${module.boxjava.basedir}/out/production/boxJava"/>
+  <property name="boxjava.testoutput.dir" value="${module.boxjava.basedir}/out/test/boxJava"/>
+  
+  <path id="boxjava.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="boxjava.module.production.classpath">
+    <path refid="${module.jdk.classpath.boxjava}"/>
+    <path refid="library.box-java-sdk-2.1.1.classpath"/>
+    <path refid="library.minimal-json-0.9.1.classpath"/>
+  </path>
+  
+  <path id="boxjava.runtime.production.module.classpath">
+    <pathelement location="${boxjava.output.dir}"/>
+    <path refid="library.box-java-sdk-2.1.1.classpath"/>
+    <path refid="library.minimal-json-0.9.1.classpath"/>
+  </path>
+  
+  <path id="boxjava.module.classpath">
+    <path refid="${module.jdk.classpath.boxjava}"/>
+    <pathelement location="${boxjava.output.dir}"/>
+    <path refid="library.box-java-sdk-2.1.1.classpath"/>
+    <path refid="library.minimal-json-0.9.1.classpath"/>
+  </path>
+  
+  <path id="boxjava.runtime.module.classpath">
+    <pathelement location="${boxjava.testoutput.dir}"/>
+    <pathelement location="${boxjava.output.dir}"/>
+    <path refid="library.box-java-sdk-2.1.1.classpath"/>
+    <path refid="library.minimal-json-0.9.1.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.boxjava">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.boxjava">
+    <patternset refid="excluded.from.module.boxjava"/>
+  </patternset>
+  
+  <path id="boxjava.module.sourcepath">
+    <dirset dir="${module.boxjava.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.boxjava" depends="compile.module.boxjava.production,compile.module.boxjava.tests" description="Compile module boxJava"/>
+  
+  <target name="compile.module.boxjava.production" depends="register.custom.compilers" description="Compile module boxJava; production classes">
+    <mkdir dir="${boxjava.output.dir}"/>
+    <javac2 destdir="${boxjava.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.boxjava}/javac">
+      <compilerarg line="${compiler.args.boxjava}"/>
+      <bootclasspath refid="boxjava.module.bootclasspath"/>
+      <classpath refid="boxjava.module.production.classpath"/>
+      <src refid="boxjava.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.boxjava"/>
+    </javac2>
+    
+    <copy todir="${boxjava.output.dir}">
+      <fileset dir="${module.boxjava.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.boxjava.tests" depends="register.custom.compilers,compile.module.boxjava.production" description="compile module boxJava; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.boxjava" description="cleanup module">
+    <delete dir="${boxjava.output.dir}"/>
+    <delete dir="${boxjava.testoutput.dir}"/>
+  </target>
+</project>
