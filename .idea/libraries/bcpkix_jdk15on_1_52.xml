@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="bcpkix-jdk15on-1.52">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/bcpkix-jdk15on-1.52.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bcprov-jdk15on-1.52.jar!/" />
+      <root url="jar://$PROJECT_DIR$/box-java-sdk-2.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jose4j-0.4.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/log4j-1.2.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/minimal-json-0.9.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/slf4j-api-1.7.21.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
