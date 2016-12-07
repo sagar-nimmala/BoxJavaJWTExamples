@@ -50,12 +50,14 @@ public class UploadFileAsEnterpriseAdmin {
 
         BoxFolder rootFolder = BoxFolder.getRootFolder(api);
 
+        System.out.println("folder owner: " + rootFolder.getInfo().getOwnedBy().getName());
+
         String fileId = uploadFile("/Users/kdomen/Downloads/ken.jpg", api, rootFolder);
 
         BoxFile boxFile = new BoxFile(api, fileId);
-        String ownerLogin = boxFile.getInfo().getOwnedBy().getLogin();
+        String ownerLogin = boxFile.getInfo().getOwnedBy().getName();
 
-        System.out.println("ownerLogin: " + ownerLogin);
+        System.out.println("file owner name: " + ownerLogin);
     }
 
     private static String uploadFile(String pathFileName, BoxAPIConnection api, BoxFolder folder) {
