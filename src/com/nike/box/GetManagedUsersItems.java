@@ -13,8 +13,9 @@ public class GetManagedUsersItems {
     private static final String CLIENT_SECRET = "";
     private static final String ENTERPRISE_ID = "";
     private static final String PUBLIC_KEY_ID = "";
-    private static final String PRIVATE_KEY_FILE = "";
+    private static final String PRIVATE_KEY_FILE = "private_key.pem";
     private static final String PRIVATE_KEY_PASSWORD = "";
+    private static final String APP_USER_NAME = "NikeAppUser";
     private static final int MAX_CACHE_ENTRIES = 100;
 
 

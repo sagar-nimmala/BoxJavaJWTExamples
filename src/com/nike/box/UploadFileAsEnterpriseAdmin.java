@@ -21,7 +21,7 @@ public class UploadFileAsEnterpriseAdmin {
     private static final String PUBLIC_KEY_ID = "";
     private static final String PRIVATE_KEY_FILE = "private_key.pem";
     private static final String PRIVATE_KEY_PASSWORD = "!";
-    private static final String APP_USER_NAME = "NikeService";
+    private static final String APP_USER_NAME = "NikeAppUser";
     private static final int MAX_CACHE_ENTRIES = 100;
 
 
