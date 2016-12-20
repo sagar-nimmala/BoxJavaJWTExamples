@@ -3,23 +3,25 @@ package com.nike.box;
 import com.box.sdk.*;
 import org.apache.log4j.Logger;
 import java.io.*;
+import java.util.Date;
 
 
 public class GetManagedUsersItems {
 
     private static Logger logger = Logger.getLogger(GetManagedUsersItems.class);
 
+
     private static final String CLIENT_ID = "";
     private static final String CLIENT_SECRET = "";
     private static final String ENTERPRISE_ID = "";
     private static final String PUBLIC_KEY_ID = "";
-    private static final String PRIVATE_KEY_FILE = "private_key.pem";
+    private static final String PRIVATE_KEY_FILE = "";
     private static final String PRIVATE_KEY_PASSWORD = "";
-    private static final String APP_USER_NAME = "NikeAppUser";
     private static final int MAX_CACHE_ENTRIES = 100;
 
 
     public static void main(String[] args) throws Exception {
+
         File file = new File(PRIVATE_KEY_FILE);
         byte[] fileData = new byte[(int) file.length()];
         DataInputStream dis = new DataInputStream(new FileInputStream(file));

@@ -8,9 +8,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
- * Created by kdomen on 12/6/16.
+ *   Note -- Run CreateAppUser.java and create an AppUser and get the userId.  Put that userId in USER_ID below.
  */
-public class UploadFileAsEnterpriseAdmin {
+public class UploadFileAsAppUser {
 
     private static final String CLIENT_ID = "";
     private static final String CLIENT_SECRET = "";
@@ -20,6 +20,7 @@ public class UploadFileAsEnterpriseAdmin {
     private static final String PRIVATE_KEY_PASSWORD = "";
     private static final int MAX_CACHE_ENTRIES = 100;
     private static final String FILE = "";
+    private static final String USER_ID = "";    // <--- put the appUserId here
 
 
     public static void main(String[] args) throws Exception {
@@ -39,14 +40,10 @@ public class UploadFileAsEnterpriseAdmin {
 
         IAccessTokenCache accessTokenCache = new InMemoryLRUAccessTokenCache(MAX_CACHE_ENTRIES);
 
-        BoxDeveloperEditionAPIConnection api = BoxDeveloperEditionAPIConnection.getAppEnterpriseConnection(
-                ENTERPRISE_ID, CLIENT_ID, CLIENT_SECRET, encryptionPref, accessTokenCache);
-
-        BoxUser.Info userInfo = BoxUser.getCurrentUser(api).getInfo();
-        System.out.format("Welcome, %s!\n\n", userInfo.getName());
+        BoxDeveloperEditionAPIConnection api = BoxDeveloperEditionAPIConnection.getAppUserConnection(USER_ID, CLIENT_ID,
+                CLIENT_SECRET, encryptionPref, accessTokenCache);
 
         BoxFolder rootFolder = BoxFolder.getRootFolder(api);
-
         System.out.println("folder owner: " + rootFolder.getInfo().getOwnedBy().getName());
 
         String fileId = uploadFile(FILE, api, rootFolder);
