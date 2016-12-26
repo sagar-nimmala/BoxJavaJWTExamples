@@ -9,6 +9,3 @@ Prereq
 4.  Add Public Key to App (remember to get keyId) - get keyId
 5.  Admin - Grant Access to app in admin console
 6.  Admin - Get enterprise_id from admin console
-
-
-1.  GetManagedUsersItems - get the first managed user it finds and list its items (folders and files)
