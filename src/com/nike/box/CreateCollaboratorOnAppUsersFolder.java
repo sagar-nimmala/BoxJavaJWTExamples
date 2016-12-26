@@ -47,7 +47,7 @@ public class CreateCollaboratorOnAppUsersFolder {
 
 
         BoxFolder kentestFolder = getChildFolder(rootFolder);
-        kentestFolder.collaborate("p.kdomen@nike.com", BoxCollaboration.Role.EDITOR);
+        kentestFolder.collaborate("<email_address>", BoxCollaboration.Role.EDITOR);
 
         String fileId = uploadFile(FILE, api, kentestFolder);
 
