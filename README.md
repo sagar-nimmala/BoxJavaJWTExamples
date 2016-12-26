@@ -2,6 +2,7 @@
 Box Java JWT Examples
 
 Prereq
+
 1.  Create an App - get client_id & client_secret
 2.  Set App to use JWT and set scopes and permissions as necessary
 3.  Generate RSA Key Pair
