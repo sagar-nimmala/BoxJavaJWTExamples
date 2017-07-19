@@ -74,7 +74,7 @@ public class UploadFileAsAppUser {
             if (!fileExists) {
                 System.out.println("uploading new file: " + fileName);
                 FileInputStream stream = new FileInputStream(pathFileName);
-                BoxFile.Info boxInfo = folder.uploadFile(stream, pathFileName);
+                BoxFile.Info boxInfo = folder.uploadFile(stream, fileName);
                 fileId = boxInfo.getID();
                 stream.close();
             }
